@@ -1,0 +1,12 @@
+---
+- hosts: dhcp
+  become: yes
+  roles:
+    - role: common
+    - role: dhcp
+
+- hosts: dns
+  become: yes
+  roles:
+    - role: common
+    - role: dns
