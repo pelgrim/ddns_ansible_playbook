@@ -1,0 +1,40 @@
+---
+# ensure docker-engine is installed
+- name: "install apt-transport-https"
+  apt:
+    name: apt-transport-https
+    state: latest
+
+- name: "install ca-certificates"
+  apt:
+    name: ca-certificates
+    state: latest
+
+- name: "add docker repository GPG key"
+  apt_key:
+    keyserver: p80.pool.sks-keyservers.net
+    id: "58118E89F3A912897C070ADBF76221572C52609D"
+    state: present
+
+- name: "docker repository file"
+  apt_repository:
+    repo: "deb https://apt.dockerproject.org/repo ubuntu-{{ ansible_distribution_release }} main"
+    state: present
+
+- name: "install ubuntu trusty linux kernel image"
+  apt:
+    name: linux-image-generic-lts-trusty
+    state: present
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version == '12.04'
+
+- name: "install ubuntu newer-than-trusty linux kernel image"
+  apt:
+    name: linux-image-extra-{{ ansible_kernel }}
+    state: present
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_version > '12.04'
+
+- name: "install docker-engine"
+  apt:
+    name: docker-engine
+    state: latest
+    update_cache: yes
