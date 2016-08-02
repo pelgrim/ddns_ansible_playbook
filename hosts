@@ -1,0 +1,5 @@
+[dhcp]
+dhcp.lan.example.com
+
+[dns]
+dns.lan.example.com
