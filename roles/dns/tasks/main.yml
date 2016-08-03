@@ -24,6 +24,11 @@
     src: "db.reverse_zone.j2"
     dest: "{{ data_dir }}/db.{{ reverse_zone_name }}"
 
+- name: "store ddns key file"
+  template:
+    src: "ddns.key.j2"
+    dest: "{{ data_dir }}/ddns.key"
+
 - name: "run dns docker container"
   docker_container:
     name: "dns"

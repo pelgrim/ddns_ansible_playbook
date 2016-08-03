@@ -9,6 +9,11 @@
     name: "{{ data_dir }}"
     state: "directory"
 
+- name: "store ddns key file"
+  template:
+    src: "ddns.key.j2"
+    dest: "{{ data_dir }}/ddns.key"
+
 - name: "store dhcpd.conf file"
   template:
     src: "dhcpd.conf.j2"
