@@ -1,0 +1,12 @@
+// data/named.conf.local
+
+zone "{{ zone_name }}" {
+  type master;
+  file "/data/db.{{ zone_name }}";
+};
+
+zone "{{ reverse_zone_name }}.in-addr.arpa" {
+  type master;
+  notify no;
+  file "/data/db.{{ reverse_zone_name }}";
+};

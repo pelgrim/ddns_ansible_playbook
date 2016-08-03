@@ -8,3 +8,8 @@
   file:
     name: "{{ data_dir }}"
     state: directory
+
+- name: "stores local named configuration file"
+  template:
+    src: "named.conf.local.j2"
+    dest: "{{ data_dir }}/named.conf.local"
