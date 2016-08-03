@@ -38,3 +38,14 @@
     name: docker-engine
     state: latest
     update_cache: yes
+    cache_valid_time: 120
+
+- name: "install python pip"
+  apt:
+    name: python-pip
+    state: present
+
+- name: "install docker-py"
+  pip:
+    name: docker-py
+    state: present
