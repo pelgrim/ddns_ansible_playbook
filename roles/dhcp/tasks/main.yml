@@ -1,0 +1,5 @@
+---
+- name: "download networkboot/dhcpd docker image"
+  docker_image:
+    name: "networkboot/dhcpd"
+    state: present
