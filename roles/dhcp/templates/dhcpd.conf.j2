@@ -1,0 +1,9 @@
+authoritative;
+subnet {{ net_addr }} netmask {{ net_mask }} {
+  max-lease-time {{ max_lease }};
+  default-lease-time {{ default_lease }};
+  {% for host in groups['dns'] %}
+  option domain-name-servers {{ hostvars[host]['inventory_hostname'] }};
+  {% endfor %}
+  range {{ low_net_addr }} {{ high_net_addr }};
+}
