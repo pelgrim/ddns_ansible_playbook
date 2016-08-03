@@ -3,3 +3,13 @@
   docker_image:
     name: "networkboot/dhcpd"
     state: present
+
+- name: "create dhcp data directory"
+  file:
+    name: "{{ data_dir }}"
+    state: "directory"
+
+- name: "store dhcpd.conf file"
+  template:
+    src: "dhcpd.conf.j2"
+    dest: "{{ data_dir }}/dhcpd.conf"
