@@ -18,3 +18,8 @@
   template:
     src: "db.zone.j2"
     dest: "{{ data_dir }}/db.{{ zone_name }}"
+
+- name: "stores reverse zone db file"
+  template:
+    src: "db.reverse_zone.j2"
+    dest: "{{ data_dir }}/db.{{ reverse_zone_name }}"
