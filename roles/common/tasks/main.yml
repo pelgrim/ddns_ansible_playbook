@@ -2,6 +2,6 @@
 - name: "validate OS"
   fail:
     message: "only works on Ubuntu Server 64 bits hosts, version 12.04 or newer"
-  when: ansible_distribution == Ubuntu and ansible_distribution_version >= 12.04 and ansible_machine == x86_64
-  
+  when: ansible_distribution != 'Ubuntu' and ansible_distribution_version < '12.04' and ansible_machine != 'x86_64'
+
 - include: docker-engine.yml
