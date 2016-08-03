@@ -13,3 +13,8 @@
   template:
     src: "named.conf.local.j2"
     dest: "{{ data_dir }}/named.conf.local"
+
+- name: "stores zone db file"
+  template:
+    src: "db.zone.j2"
+    dest: "{{ data_dir }}/db.{{ zone_name }}"

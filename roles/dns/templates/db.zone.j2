@@ -1,0 +1,20 @@
+; data/db.{{ zone_name }}
+; Zone file for {{ zone_name }}
+;
+$TTL    86400
+@       IN      SOA     {{ zone_name }}. root.{{ zone_name }}. (
+                              1         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                          86400 )       ; Negative Cache TTL
+;
+@       IN      NS      ns1.{{ zone_name }}.
+ns1     IN      A       {{ zone_primary_ns }}
+{% for address in addresses['a'] %}
+{{ address.name }} IN A {{ address.ip }}
+{% endfor %}
+
+{% for address in addresses['cname'] %}
+{{ address.name }} IN CNAME {{ address.to }}
+{% endfor %}

@@ -2,3 +2,15 @@ data_dir: "/media/dns/data"
 zone_name: "lan.example.com"
 reverse_zone_name: "3.168.192"
 zone_primary_ns: "192.168.3.101"
+
+addresses:
+  a:
+    - name: gw0
+      ip: 192.168.3.1
+    - name: metal0
+      ip: 192.168.3.100
+    - name: ops0
+      ip: 192.168.3.10
+  cname:
+    - name: metal1
+      to: ns1
