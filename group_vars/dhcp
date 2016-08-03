@@ -5,3 +5,6 @@ max_lease: 120
 default_lease: 120
 low_net_addr: 192.168.3.201
 high_net_addr: 192.168.3.241
+external_dns_server: 8.8.8.8
+routers:
+  - 192.168.3.1

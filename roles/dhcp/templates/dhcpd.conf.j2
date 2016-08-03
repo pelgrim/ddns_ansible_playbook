@@ -2,8 +2,8 @@ authoritative;
 subnet {{ net_addr }} netmask {{ net_mask }} {
   max-lease-time {{ max_lease }};
   default-lease-time {{ default_lease }};
-  {% for host in groups['dns'] %}
-  option domain-name-servers {{ hostvars[host]['inventory_hostname'] }};
-  {% endfor %}
+  option routers{% for router in routers %} {{ router }}{% endfor %};
+  option domain-name "{{ zone_name }}";
+  option domain-name-servers {{ zone_primary_ns }}, {{ external_dns_server }};
   range {{ low_net_addr }} {{ high_net_addr }};
 }
