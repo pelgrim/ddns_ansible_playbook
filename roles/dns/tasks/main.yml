@@ -23,3 +23,19 @@
   template:
     src: "db.reverse_zone.j2"
     dest: "{{ data_dir }}/db.{{ reverse_zone_name }}"
+
+- name: "run dns docker container"
+  docker_container:
+    name: "dns"
+    detach: yes
+    volumes: "{{ data_dir }}:/data"
+    exposed_ports:
+      - "53/udp"
+      - "53/tcp"
+    ports:
+      - "{{ ansible_eth0['ipv4']['address'] }}:53:53/udp"
+      - "{{ ansible_eth0['ipv4']['address'] }}:53:53/tcp"
+    image: "plgr/bind"
+    restart_policy: "always"
+    state: started
+    restart: yes
