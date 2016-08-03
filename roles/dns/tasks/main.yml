@@ -3,3 +3,8 @@
   docker_image:
     name: "plgr/bind"
     state: present
+
+- name: "create dns data directory"
+  file:
+    name: "{{ data_dir }}"
+    state: directory
