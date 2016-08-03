@@ -1,0 +1,5 @@
+---
+- name: "download plgr/bind image"
+  docker_image:
+    name: "plgr/bind"
+    state: present
