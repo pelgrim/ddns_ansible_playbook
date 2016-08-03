@@ -9,7 +9,7 @@
   roles:
     - role: dhcp
 
-# - hosts: dns
-#   become: yes
-#   roles:
-    # - role: dns
+- hosts: dns
+  become: yes
+  roles:
+    - role: dns
