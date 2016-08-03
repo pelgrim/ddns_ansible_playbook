@@ -4,10 +4,10 @@
   roles:
     - role: common
 
-# - hosts: dhcp
-#   become: yes
-#   roles:
-    # - role: dhcp
+- hosts: dhcp
+  become: yes
+  roles:
+    - role: dhcp
 
 # - hosts: dns
 #   become: yes
