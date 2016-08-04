@@ -1,12 +1,16 @@
 // data/named.conf.local
 
+include "/data/ddns.key";
+
 zone "{{ zone_name }}" {
   type master;
   file "/data/db.{{ zone_name }}";
+  allow-update { key "DDNS_UPDATE"; };
 };
 
 zone "{{ reverse_zone_name }}.in-addr.arpa" {
   type master;
   notify no;
   file "/data/db.{{ reverse_zone_name }}";
+  allow-update { key "DDNS_UPDATE"; };
 };
