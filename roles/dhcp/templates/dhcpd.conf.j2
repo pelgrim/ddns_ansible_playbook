@@ -1,9 +1,28 @@
 authoritative;
+option domain-name "{{ zone_name }}";
+option domain-name-servers {{ zone_primary_ns }}, {{ external_dns_server }};
+
+ddns-updates on;
+ddns-update-style interim;
+ignore client-updates;
+update-static-leases on;
+
+max-lease-time {{ max_lease }};
+default-lease-time {{ default_lease }};
+
+include "/data/ddns.key";
+
+zone {{ zone_name }}. {
+  primary {{ zone_primary_ns }};
+  key DDNS_UPDATE;
+}
+
+zone {{ reverse_zone_name }}. {
+  primary {{ zone_primary_ns }};
+  key DDNS_UPDATE;
+}
+
 subnet {{ net_addr }} netmask {{ net_mask }} {
-  max-lease-time {{ max_lease }};
-  default-lease-time {{ default_lease }};
-  option routers{% for router in routers %} {{ router }}{% endfor %};
-  option domain-name "{{ zone_name }}";
-  option domain-name-servers {{ zone_primary_ns }}, {{ external_dns_server }};
   range {{ low_net_addr }} {{ high_net_addr }};
+  option routers{% for router in routers %} {{ router }}{% endfor %};
 }

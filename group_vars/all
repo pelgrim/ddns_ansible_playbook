@@ -1,4 +1,5 @@
 zone_name: "lan.example.com"
+reverse_zone_name: "3.168.192"
 zone_primary_ns: "192.168.3.101"
 http_proxy:
 https_proxy:

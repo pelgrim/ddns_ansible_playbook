@@ -1,5 +1,4 @@
 data_dir: "/media/dns/data"
-reverse_zone_name: "3.168.192"
 
 addresses:
   a:
