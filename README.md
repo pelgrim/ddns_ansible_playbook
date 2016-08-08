@@ -22,10 +22,17 @@ Both containers may be hosted by the same or differente hosts.
 
   * group_vars/dns.
 
-3. Now, run the playbook as usual:
+3. Generate a shared key to your DDNS deployment (you will need bind9utils installed in order to do that):
 
   ```bash
-  ansible-playbook -i <path to hosts file> --ask-become-pass site.yml
+  dnssec-keygen -a HMAC-MD5 -b 128 -r /dev/urandom -n USER DDNS_UPDATE
+  grep DDNS_UPDATE Kddns_update.*.key | cut -d' ' -f7
+  ```
+
+4. Now, store the key inside a environment variable called DDNS_SECRET, and run the playbook as usual:
+
+  ```bash
+  DDNS_SECRET=<generated key> ansible-playbook -i <path to hosts file> --ask-become-pass site.yml
   ```
 
 ## What else?
