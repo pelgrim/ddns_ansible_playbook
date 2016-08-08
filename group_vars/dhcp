@@ -1,10 +1,22 @@
+# CONTAINER HOST CONFIGURATION
+# Configure here the location of the data dir stored into the host server. This
+# is where the configuration will be stored with persistence, important in order
+# to create or destroy containers while preserving important configuration and
+# states.
+
 data_dir: "/media/dhcp/data"
+
+# NETWORK VARIABLES
 net_addr: 192.168.3.0
 net_mask: 255.255.255.0
-max_lease: 120
-default_lease: 120
+routers:
+- 192.168.3.1
+external_dns_server: 8.8.8.8
+
+# DHCP ADDRESS RANGE LIMITS
 low_net_addr: 192.168.3.201
 high_net_addr: 192.168.3.241
-external_dns_server: 8.8.8.8
-routers:
-  - 192.168.3.1
+
+# LEASE TIME
+max_lease: 120
+default_lease: 120
