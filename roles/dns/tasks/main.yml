@@ -8,6 +8,8 @@
   file:
     name: "{{ data_dir }}"
     state: directory
+  tags:
+    - confs
 
 - name: "stores local named configuration file"
   template:
@@ -18,16 +20,22 @@
   template:
     src: "db.zone.j2"
     dest: "{{ data_dir }}/db.{{ zone_name }}"
+  tags:
+    - confs
 
 - name: "stores reverse zone db file"
   template:
     src: "db.reverse_zone.j2"
     dest: "{{ data_dir }}/db.{{ reverse_zone_name }}"
+  tags:
+    - confs
 
 - name: "store ddns key file"
   template:
     src: "ddns.key.j2"
     dest: "{{ data_dir }}/ddns.key"
+  tags:
+    - confs
 
 - name: "run dns docker container"
   docker_container:

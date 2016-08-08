@@ -8,16 +8,22 @@
   file:
     name: "{{ data_dir }}"
     state: "directory"
+  tags:
+    - confs
 
 - name: "store ddns key file"
   template:
     src: "ddns.key.j2"
     dest: "{{ data_dir }}/ddns.key"
+  tags:
+    - confs
 
 - name: "store dhcpd.conf file"
   template:
     src: "dhcpd.conf.j2"
     dest: "{{ data_dir }}/dhcpd.conf"
+  tags:
+    - confs
 
 - name: "run dhcp docker container"
   docker_container:
