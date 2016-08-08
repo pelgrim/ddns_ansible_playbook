@@ -1,4 +1,15 @@
+# CONTAINER HOST CONFIGURATION
+# Configure here the location of the data dir stored into the host server. This
+# is where the configuration will be stored with persistence, important in order
+# to create or destroy containers while preserving important configuration and
+# states.
+
 data_dir: "/media/dns/data"
+
+# DNS FIXED ENTRIES
+# In the following lines, you may configure A and CNAME type fixed entries. It's
+# a good place to configure network infrastructure devices and workstations,
+# which are important to work even if the DHCP service is offline.
 
 addresses:
   a:
