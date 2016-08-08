@@ -23,6 +23,11 @@ zone {{ reverse_zone_name }}. {
 }
 
 subnet {{ net_addr }} netmask {{ net_mask }} {
+  {% if low_net_addr is defined and
+        high_net_addr is defined and
+        low_net_addr != "" and
+        high_net_addr != "" %}
   range {{ low_net_addr }} {{ high_net_addr }};
+  {% endif %}
   option routers{% for router in routers %} {{ router }}{% endfor %};
 }
