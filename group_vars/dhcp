@@ -14,8 +14,10 @@ routers:
 external_dns_server: 8.8.8.8
 
 # DHCP ADDRESS RANGE LIMITS
-low_net_addr: 192.168.3.201
-high_net_addr: 192.168.3.241
+# If you want to set a dynamic addresses range, comment the two following
+# lines and adjust the values.
+low_net_addr: 192.168.3.150
+high_net_addr: 192.168.3.200
 
 # LEASE TIME
 max_lease: 120
