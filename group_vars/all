@@ -1,8 +1,20 @@
-# fixed
-zone_primary_ns: "{{ hostvars[groups['dns'][0]]['ansible_eth0']['ipv4']['address'] }}"
+# ZONE NAMES
+# define your lan zone and reverse zone names. the zone name is specially important, since it will be used to name configuration files as well as to define a great number of configurations.
 
-# customizable
 zone_name: "lan.example.com"
 reverse_zone_name: "3.168.192"
+
+
+# PROXY
+# if you need to configure a proxy, fill the following configurations.
+
 http_proxy:
 https_proxy:
+
+
+# DNS SERVER ADDRESS
+# Set the host interface, but don't mess with the zone_primary_ns configuration, except if you really know what you are doing.
+# To configure the interface, change the value eth0 in *ansible_eth0* to the interface name you desire. For example, if you intend to use *br0*, you would set the value to *ansible_br0*.
+
+dns_server_interface: 'ansible_eth0'
+zone_primary_ns: "{{ hostvars[groups['dns'][0]][dns_server_interface]['ipv4']['address'] }}"
