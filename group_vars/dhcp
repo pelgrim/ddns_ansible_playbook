@@ -14,11 +14,24 @@ routers:
 external_dns_server: 8.8.8.8
 
 # DHCP ADDRESS RANGE LIMITS
-# If you want to set a dynamic addresses range, comment the two following
-# lines and adjust the values.
+# If you want to set a dynamic addresses range, keep the two following lines
+# uncommented, and adjust the values.
 low_net_addr: 192.168.3.150
 high_net_addr: 192.168.3.200
 
 # LEASE TIME
 max_lease: 120
 default_lease: 120
+
+# FIXED LEASES
+# If you want to set fixed addresses, uncomment the two following
+# lines and adjust the values.
+# fixed_leases:
+#
+# - name: keytar0
+#   ip: 192.168.3.140
+#   mac: 08:00:27:1e:cb:89
+#
+# - name: keytar1
+#   ip: 192.168.3.141
+#   mac: 08:00:27:c1:fd:44

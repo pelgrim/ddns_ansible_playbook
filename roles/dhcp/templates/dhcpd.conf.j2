@@ -31,3 +31,13 @@ subnet {{ net_addr }} netmask {{ net_mask }} {
   {% endif %}
   option routers{% for router in routers %} {{ router }}{% endfor %};
 }
+
+{% if fixed_leases is defined %}
+{% for fixed_lease in fixed_leases %}
+host {{ fixed_lease.name }} {
+  hardware ethernet {{ fixed_lease.mac }};
+  fixed-address {{ fixed_lease.ip }};
+  option host-name "{{ fixed_lease.name }}.{{ zone_name }}";
+}
+{% endfor %}
+{% endif %}
